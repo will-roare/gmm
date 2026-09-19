@@ -2,8 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\EpisodeController;
+
 
 Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/episodes', [EpisodeController::class, 'index'])->name('episodes.index');
+
 
 Route::get('/dashboard', function () {
     return view('userzone.dashboard');
