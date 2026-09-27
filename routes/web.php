@@ -7,6 +7,7 @@ use App\Http\Controllers\EpisodeController;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/episodes', [EpisodeController::class, 'index'])->name('episodes.index');
+Route::get('/episodes/{id}', [EpisodeController::class, 'show'])->name('episodes.show');
 
 
 Route::get('/dashboard', function () {
