@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Episode extends Model
 {
-    /** @use HasFactory<\Database\Factories\EpisodeFactory> */
-    use HasFactory;
+    public function author()
+{
+    return $this->belongsTo(User::class, 'user_id');
+}
 }
