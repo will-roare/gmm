@@ -7,7 +7,9 @@ use App\Http\Controllers\EpisodeController;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/episodes', [EpisodeController::class, 'index'])->name('episodes.index');
+Route::get('/episodes/create', [EpisodeController::class, 'create'])->name('episodes.create');
 Route::get('/episodes/{id}', [EpisodeController::class, 'show'])->name('episodes.show');
+Route::post('/episodes', [EpisodeController::class, 'store'])->name('episodes.store');
 
 
 Route::get('/dashboard', function () {

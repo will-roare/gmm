@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Episode;
+use App\Models\Category;
+
 
 
 use Illuminate\Http\Request;
@@ -18,5 +20,26 @@ class EpisodeController extends Controller
         $episode = Episode::find($id);
         return view('episodes.show', ['episode' => $episode]);
     }
-}
+        public function create()
+        {
+        $categories = Category::all();
+        return view('episodes.create', ['categories' => $categories]);
+        }
+        
+        public function store(Request $request)
+{
+    $validated = $request->validate([
+        'episode_number' => ['required', 'integer'],
+        'title' => ['required', 'string', 'max:255'],
+        'description' => ['nullable', 'string'],
+        'category_id' => ['required', 'exists:categories,id'],
+    ]);
 
+    $validated['user_id'] = auth()->id();
+
+    Episode::create($validated);
+
+    return redirect()->route('episodes.index');
+}
+   
+}
