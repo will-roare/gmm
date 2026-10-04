@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('episodes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
+            $table->foreignId('category_id');
             $table->integer('episode_number');
             $table->string('title');
             $table->text('description')->nullable();

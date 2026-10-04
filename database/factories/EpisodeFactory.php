@@ -19,6 +19,7 @@ class EpisodeFactory extends Factory
     {
         return [
             'user_id' => \App\Models\User::factory(),
+            'category_id' => \App\Models\Category::factory(),
             'episode_number' => fake()->unique()->numberBetween(1, 500),
             'title' => fake()->sentence(),
             'description' => fake()->paragraph(),
