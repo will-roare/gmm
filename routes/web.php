@@ -10,7 +10,8 @@ Route::get('/episodes', [EpisodeController::class, 'index'])->name('episodes.ind
 Route::get('/episodes/create', [EpisodeController::class, 'create'])->name('episodes.create');
 Route::get('/episodes/{id}', [EpisodeController::class, 'show'])->name('episodes.show');
 Route::post('/episodes', [EpisodeController::class, 'store'])->name('episodes.store');
-
+Route::get('/episodes/{id}/edit', [EpisodeController::class, 'edit'])->name('episodes.edit');
+Route::put('/episodes/{id}', [EpisodeController::class, 'update'])->name('episodes.update');
 
 Route::get('/dashboard', function () {
     return view('userzone.dashboard');

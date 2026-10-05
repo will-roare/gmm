@@ -27,6 +27,7 @@ class EpisodeController extends Controller
         }
         
         public function store(Request $request)
+       
 {
     $validated = $request->validate([
         'episode_number' => ['required', 'integer'],
@@ -40,6 +41,31 @@ class EpisodeController extends Controller
     Episode::create($validated);
 
     return redirect()->route('episodes.index');
+}
+
+ public function edit($id)
+{
+    $episode = Episode::find($id);
+    $categories = Category::all();
+
+    return view('episodes.edit', [
+        'episode' => $episode,
+        'categories' => $categories,
+    ]);
+}
+public function update(Request $request, $id)
+{
+    $validated = $request->validate([
+        'episode_number' => ['required', 'integer'],
+        'title' => ['required', 'string', 'max:255'],
+        'description' => ['nullable', 'string'],
+        'category_id' => ['required', 'exists:categories,id'],
+    ]);
+
+    $episode = Episode::find($id);
+    $episode->update($validated);
+
+    return redirect()->route('episodes.show', $episode->id);
 }
    
 }
