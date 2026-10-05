@@ -67,5 +67,12 @@ public function update(Request $request, $id)
 
     return redirect()->route('episodes.show', $episode->id);
 }
+public function destroy($id)
+{
+    $episode = Episode::find($id);
+    $episode->delete();
+
+    return redirect()->route('episodes.index');
+}
    
 }
