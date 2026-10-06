@@ -14,15 +14,15 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
     public function run(): void
-    {
-         \App\Models\Episode::factory()->count(10)->create();
-         
-       
+{
+    $admin = User::factory()->create([
+        'name' => 'GMM Admin',
+        'email' => 'admin@gmm.test',
+        'password' => bcrypt('password'),
+    ]);
 
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
-    }
+    \App\Models\Episode::factory()->count(10)->create([
+        'user_id' => $admin->id,
+    ]);
+}
 }
