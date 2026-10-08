@@ -35,3 +35,4 @@
 
     <button type="submit">Save episode</button>
 </form>
+<p><a href="{{ route('episodes.index') }}">Back to all episodes</a></p>

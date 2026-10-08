@@ -9,3 +9,4 @@
     @method('DELETE')
     <button type="submit">Delete episode</button>
 </form>
+<p><a href="{{ route('episodes.index') }}">Back to all episodes</a></p>
